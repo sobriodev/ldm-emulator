@@ -1,0 +1,18 @@
+language: C
+os: linux
+dist: xenial
+script:
+- mkdir -p build
+- cd build
+- cmake ..
+- make
+- make test
+after_success:
+- cd ..
+- cd scripts
+- chmod +x auto_merge.sh
+- "./auto_merge.sh"
+
+env:
+  global:
+    secure: Jo2Rp6vi8byqZFhsfmRwl4ljjhywljOwm7sTkIOa8Qr0Ctn2AjfVwwhma09Lm5XNjOtlGwvzY2PfsbL4TSG6VHvbX+jg+93GSrIt+k81gdZKBLqjFZXMt8TwD10JyTmdcoqOlBmkNFrkSkUM2nHS8WZo/+fixhC8OAz9Jpr5F6SaHqEJfvt1NFa8PokxtXkd48KZCeDt3tbGZiGZ0euNAp0Vdg9nW+grKlmRz1KBM2EIHMyCIa22/x7PX9WMti+1EO+/tNlwhaZTXjMt/qpJ66uZe2Zg70ISkSh5Sug3gDoKLtosfFDgjmHGp4FGmxsJAlmP6in30P1J0chcHqW0GCjTEAHMLxQhiqdS9mxNLERH/Lzp83NlAIY/ZrRdfE7IesAOyaydR9IOqpN1v1gn4Aq+HHBq+C1XApO7czbgjFSbFERIk6Nxs9rJKaBrORnNVUu923afQg++4Y332JFYwb2DAK7bXSn2KgfNsgIUEIdJPCVLlBV5er/GMOhz+7dJ3Zv0IQIsqbXKcGMv7T/Z3zAY/MrJ4Am+umocZZQCr3fnyTGFH8IecUdOE5wLUrhO4CP39zz52iK8EHT7Ix3uiS39d0SgajfLpbAVdD0M40Rt8lbScHTQ/DYf9+tmsy5D458ovqkfOZbsKesDdtHTF+6A6j2bicaj3ohKFTaNRTk=
