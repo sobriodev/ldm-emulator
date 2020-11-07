@@ -23,7 +23,8 @@ extern "C" {
 /* UT_DEVICE */
 void UT_DEVICE_GetNext_ByDefaultReturnsUndefinedDevice(void);
 void UT_DEVICE_CreateWithAllocator_ErrStatusWhenAllocatorFails(void);
-void UT_DEVICE_CreateWithAllocator_ErrStatusWhenNullPtrsGiven(void);
+void UT_DEVICE_ErrStatusWhenNullPtrsGiven(void);
+void UT_DEVICE_Destroy_HandleIsSetToNull(void);
 
 /* End of the tests declaration */
 

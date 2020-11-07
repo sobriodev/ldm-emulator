@@ -26,3 +26,12 @@ DEVICE_Status DEVICE_CreateWithAllocator(DEVICE_Handle** device, u32 id, DEVICE_
     SetProperties(*device, id);
     return DEVICE_StatusOk;
 }
+
+DEVICE_Status DEVICE_Destroy(DEVICE_Handle** device)
+{
+    COMMON_DIE_IF_NULL(device, DEVICE_StatusNullPtr);
+
+    free(*device);
+    *device = DEVICE_UNDEFINED;
+    return DEVICE_StatusOk;
+}

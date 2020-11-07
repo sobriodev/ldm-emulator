@@ -10,7 +10,8 @@ int main(void)
 	/* UT_DEVICE */
 	RUN_TEST(UT_DEVICE_GetNext_ByDefaultReturnsUndefinedDevice);
 	RUN_TEST(UT_DEVICE_CreateWithAllocator_ErrStatusWhenAllocatorFails);
-	RUN_TEST(UT_DEVICE_CreateWithAllocator_ErrStatusWhenNullPtrsGiven);
+	RUN_TEST(UT_DEVICE_ErrStatusWhenNullPtrsGiven);
+	RUN_TEST(UT_DEVICE_Destroy_HandleIsSetToNull);
 
     return UNITY_END();
 }

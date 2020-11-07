@@ -43,7 +43,7 @@ typedef void* (*DEVICE_MemAllocator)(size len);
 /**
  * @brief Create device with a custom memory allocator.
  *
- * The function allocates device memory and initializes it with specified values.
+ * The function allocates device's memory and initializes it with specified values.
  *
  * @param device Pointer that will point to allocated resources
  * @param id     Device ID. Must be unique within an application
@@ -68,7 +68,7 @@ DEVICE_Status DEVICE_CreateWithAllocator(DEVICE_Handle** device, u32 id, DEVICE_
  * @param id     Device ID. Must be unique within an application
  *
  * @return Instance of DEVICE_status. See DEVICE_CreateWithAllocator to get status codes that
- *         function returns
+ *         function returns.
  */
 static inline DEVICE_Status DEVICE_Create(DEVICE_Handle** device, u32 id)
 {
@@ -88,6 +88,22 @@ static inline DEVICE_Handle* DEVICE_GetNext(const DEVICE_Handle* device)
 {
     return device->next;
 }
+
+/**
+ * @brief Destroy device.
+ *
+ * The function frees allocated resources and sets the device's pointer to DEVICE_UNDEFINED.
+ *
+ * @param device : Device to be destroyed
+ *
+ * @return Instance of DEVICE_Status. The function returns:
+ *          - DEVICE_StatusNullPtr when null pointer instead of valid device passed
+ *          - DEVICE_StatusOk on success
+ *
+ * @note If device has child, after freeing it the child's pointer will be lost and memory
+ *       leaks are guaranted. Always free devices in the reverse order they were created.
+ */
+DEVICE_Status DEVICE_Destroy(DEVICE_Handle** device);
 
 #if defined(__cplusplus)
 }
