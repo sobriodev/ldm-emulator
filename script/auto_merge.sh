@@ -9,7 +9,7 @@ echo $commit_message
 if echo $commit_message | grep -q "$commit_message_regex"; then
     curl -o /tmp/travis-automerge https://raw.githubusercontent.com/cdown/travis-automerge/master/travis-automerge
     chmod a+x /tmp/travis-automerge
-    BRANCHES_TO_MERGE_REGEX="" BRANCH_TO_MERGE_INTO=develop GITHUB_REPO=sobriodev/max7219-emulator /tmp/travis-automerge
+    BRANCHES_TO_MERGE_REGEX="" BRANCH_TO_MERGE_INTO=develop GITHUB_REPO=sobriodev/ldm-emulator /tmp/travis-automerge
 else
     echo "Commit message does not fullfill merge requirements. No operation performed"
 fi
