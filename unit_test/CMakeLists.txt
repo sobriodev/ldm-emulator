@@ -7,6 +7,7 @@ include_directories(${ldm_emulator_SOURCE_DIR}/src)
 
 add_executable(unit_test
     ut.h
-    ut_runner.c)
+    ut_runner.c
+    ut_device.c)
 
 target_link_libraries(unit_test src unity_framework)

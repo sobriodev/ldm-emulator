@@ -6,6 +6,12 @@
 int main(void)
 {
     UNITY_BEGIN();
+
+	/* UT_DEVICE */
+	RUN_TEST(UT_DEVICE_GetNext_ByDefaultReturnsUndefinedDevice);
+	RUN_TEST(UT_DEVICE_CreateWithAllocator_ErrStatusWhenAllocatorFails);
+	RUN_TEST(UT_DEVICE_CreateWithAllocator_ErrStatusWhenNullPtrsGiven);
+
     return UNITY_END();
 }
 

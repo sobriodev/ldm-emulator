@@ -1,3 +1,5 @@
 add_library(src
     common.h
-    common.c)
+    common.c
+    device.h
+    device.c)

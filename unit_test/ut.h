@@ -8,12 +8,22 @@ extern "C" {
 #endif
 
 /* ---------------------------------------------------------------------------------------------- */
+/* ------------------------------------------- MACROS ------------------------------------------- */
+/* ---------------------------------------------------------------------------------------------- */
+
+#define UT_STATUS_EQ(EXP, ACT) TEST_ASSERT_EQUAL_UINT32((EXP), (ACT))
+
+/* ---------------------------------------------------------------------------------------------- */
 /* -------------------------------------- Test declarations ------------------------------------- */
 /* ---------------------- Naming convention: UT_{MODULE}_{FUNCTION}_{CONDITION} ----------------- */
 /* ---------------------------------------------------------------------------------------------- */
 
 /* Put tests declaration here */
 
+/* UT_DEVICE */
+void UT_DEVICE_GetNext_ByDefaultReturnsUndefinedDevice(void);
+void UT_DEVICE_CreateWithAllocator_ErrStatusWhenAllocatorFails(void);
+void UT_DEVICE_CreateWithAllocator_ErrStatusWhenNullPtrsGiven(void);
 
 /* End of the tests declaration */
 
