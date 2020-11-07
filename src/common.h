@@ -14,8 +14,19 @@ extern "C" {
 /* ------------------------------------------- Macros ------------------------------------------- */
 /* ---------------------------------------------------------------------------------------------- */
 
+#ifdef __glibc_likely
+    #define COMMON_LIKELY __glibc_likely
+#else
+    #define COMMON_LIKELY
+#endif
+#ifdef __glibc_unlikely
+    #define COMMON_UNLIKELY __glibc_unlikely
+#else
+    #define COMMON_UNLIKELY
+#endif
+
 /** Exit function with given status code when actual pointer is NULL */
-#define COMMON_DIE_IF_NULL(ACT, STATUS) if(NULL == (ACT)) {return (STATUS);}
+#define COMMON_DIE_IF_NULL(ACT, STATUS) if(COMMON_UNLIKELY(NULL == (ACT))) {return (STATUS);}
 
 /* ---------------------------------------------------------------------------------------------- */
 /* ----------------------------------------- Data types ----------------------------------------- */

@@ -43,7 +43,10 @@ void DEVICE_PrintChain(const DEVICE_Handle* device)
     if (DEVICE_UNDEFINED == device) {
         printf("UNDEFINED DEVICE\n");
     } else {
-        printf("DEVICE@%p {id: %u, next: %p} ->\n", device, device->id, device->next);
-        DEVICE_PrintChain(device->next);
+        printf("DEVICE@%p {id: %u, next: %p} ->\n",
+               device,
+               DEVICE_GetId(device),
+               DEVICE_GetNext(device));
+        DEVICE_PrintChain(DEVICE_GetNext(device));
     }
 }

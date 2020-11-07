@@ -45,9 +45,9 @@ typedef void* (*DEVICE_MemAllocator)(size len);
  *
  * The function allocates device's memory and initializes it with specified values.
  *
- * @param device Pointer that will point to allocated resources
- * @param id     Device ID. Must be unique within an application
- * @param alloc  Custom memory allocator
+ * @param device Pointer that will point to allocated resources.
+ * @param id     Device ID. Must be unique within an application.
+ * @param alloc  Custom memory allocator.
  *
  * @return Instance of DEVICE_Status. The function returns:
  *          - DEVICE_StatusNullPtr when NULL was passed instead of valid pointer
@@ -64,8 +64,8 @@ DEVICE_Status DEVICE_CreateWithAllocator(DEVICE_Handle** device, u32 id, DEVICE_
  *
  * The function is a helper only and calls DEVICE_CreateWithAllocator internally.
  *
- * @param device Pointer that will point to allocated resources
- * @param id     Device ID. Must be unique within an application
+ * @param device Pointer that will point to allocated resources.
+ * @param id     Device ID. Must be unique within an application.
  *
  * @return Instance of DEVICE_status. See DEVICE_CreateWithAllocator to get status codes that
  *         function returns.
@@ -78,9 +78,7 @@ static inline DEVICE_Status DEVICE_Create(DEVICE_Handle** device, u32 id)
 /**
  * @brief Get next (child) device.
  *
- * Get address of next device in the chain.
- *
- * @param device Parent device
+ * @param device Parent device. Passing NULL pointer will cause an udefined behaviour.
  *
  * @return Pointer to a next device or DEVICE_UNDEFINED if device does not have a child.
  */
@@ -90,11 +88,23 @@ static inline DEVICE_Handle* DEVICE_GetNext(const DEVICE_Handle* device)
 }
 
 /**
+ * @brief Get id from device's structure.
+ *
+ * @param device Parent device. Passing NULL pointer will cause an udefined behaviour.
+ *
+ * @return Id of the device.
+ */
+static inline u32 DEVICE_GetId(const DEVICE_Handle* device)
+{
+    return device->id;
+}
+
+/**
  * @brief Destroy device.
  *
  * The function frees allocated resources and sets the device's pointer to DEVICE_UNDEFINED.
  *
- * @param device : Device to be destroyed
+ * @param device : Device to be destroyed.
  *
  * @return Instance of DEVICE_Status. The function returns:
  *          - DEVICE_StatusNullPtr when null pointer instead of valid device passed
@@ -111,7 +121,7 @@ DEVICE_Status DEVICE_Destroy(DEVICE_Handle** device);
  * The function can be used in a debug mode to print information about all devices.
  * Other API functions do not use it internally.
  *
- * @param device First device in the chain
+ * @param device First device in the chain.
  */
 void DEVICE_PrintChain(const DEVICE_Handle* device);
 
