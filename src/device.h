@@ -105,6 +105,16 @@ static inline DEVICE_Handle* DEVICE_GetNext(const DEVICE_Handle* device)
  */
 DEVICE_Status DEVICE_Destroy(DEVICE_Handle** device);
 
+/**
+ * @brief Print devices chain.
+ *
+ * The function can be used in a debug mode to print information about all devices.
+ * Other API functions do not use it internally.
+ *
+ * @param device First device in the chain
+ */
+void DEVICE_PrintChain(const DEVICE_Handle* device);
+
 #if defined(__cplusplus)
 }
 #endif

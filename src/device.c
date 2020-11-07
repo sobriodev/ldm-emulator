@@ -1,5 +1,7 @@
 #include "device.h"
 
+#include <stdio.h>
+
 /* ---------------------------------------------------------------------------------------------- */
 /* ------------------------------------- Private functions -------------------------------------- */
 /* ---------------------------------------------------------------------------------------------- */
@@ -34,4 +36,14 @@ DEVICE_Status DEVICE_Destroy(DEVICE_Handle** device)
     free(*device);
     *device = DEVICE_UNDEFINED;
     return DEVICE_StatusOk;
+}
+
+void DEVICE_PrintChain(const DEVICE_Handle* device)
+{
+    if (DEVICE_UNDEFINED == device) {
+        printf("UNDEFINED DEVICE\n");
+    } else {
+        printf("DEVICE@%p {id: %u, next: %p} ->\n", device, device->id, device->next);
+        DEVICE_PrintChain(device->next);
+    }
 }
