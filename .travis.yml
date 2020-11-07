@@ -9,7 +9,7 @@ script:
 - make test
 after_success:
 - cd ..
-- cd scripts
+- cd script
 - chmod +x auto_merge.sh
 - "./auto_merge.sh"
 
